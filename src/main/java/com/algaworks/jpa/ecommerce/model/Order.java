@@ -12,9 +12,13 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -27,6 +31,13 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_client")
+    private Client client;
+
+    @OneToMany(mappedBy = "order")
+    private List<OrderItem> orderItems;
 
     @Column(name = "order_date")
     private LocalDateTime orderDate;
