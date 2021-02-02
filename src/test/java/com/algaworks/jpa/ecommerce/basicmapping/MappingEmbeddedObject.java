@@ -23,7 +23,6 @@ public class MappingEmbeddedObject extends EntityManagerTest {
         address.setState("Porto");
 
         Order order = new Order();
-        order.setId(1);
         order.setOrderDate(LocalDateTime.now());
         order.setStatus(StatusOrder.WAITING);
         order.setTotal(new BigDecimal(9.50));

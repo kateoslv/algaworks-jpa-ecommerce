@@ -30,7 +30,6 @@ public class OperationsWithTransactionTest extends EntityManagerTest {
     public void insertObject() {
 
         Product product = new Product();
-        product.setId(2);
         product.setName("Headphone Sony");
         product.setDescription("The best noise canceling ever.");
         product.setPrice(new BigDecimal(380.00));
@@ -44,7 +43,7 @@ public class OperationsWithTransactionTest extends EntityManagerTest {
     public void insertObjectWithMerge() {
 
         Product product = new Product();
-        product.setId(4);
+        product.setId(3);
         product.setName("Tv LG");
         product.setDescription("The best tv ever.");
         product.setPrice(new BigDecimal(200.00));
@@ -63,7 +62,6 @@ public class OperationsWithTransactionTest extends EntityManagerTest {
     public void showDifferenceBetweenPersistAndMerge() {
 
         Product productPersist = new Product();
-        productPersist.setId(5);
         productPersist.setName("Iphone");
         productPersist.setDescription("The best iphone ever.");
         productPersist.setPrice(new BigDecimal(400.00));

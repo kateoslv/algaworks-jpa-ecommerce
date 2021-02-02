@@ -11,7 +11,6 @@ public class CrudClientTest extends EntityManagerTest {
     public void insertClient() {
 
         Client client = new Client();
-        client.setId(3);
         client.setName("Anne");
 
         entityManager.getTransaction().begin();

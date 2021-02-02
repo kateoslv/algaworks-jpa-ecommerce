@@ -12,8 +12,6 @@ public class MappingEnumerationsTest extends EntityManagerTest {
     public void testEnum() {
 
         Client client = new Client();
-
-        client.setId(3);
         client.setName("Pietro");
         client.setGender(Gender.MALE);
 
@@ -25,7 +23,6 @@ public class MappingEnumerationsTest extends EntityManagerTest {
 
         Client verificationClient = entityManager.find(Client.class, client.getId());
         Assert.assertNotNull(verificationClient);
-
     }
 
 }
