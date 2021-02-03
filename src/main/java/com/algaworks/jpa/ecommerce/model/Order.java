@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -45,8 +46,11 @@ public class Order {
     @Column(name = "conclusion_date")
     private LocalDateTime conclusionDate;
 
-    @Column(name = "invoice_id")
-    private Integer invoiceId;
+    @OneToOne(mappedBy = "order")
+    private Invoice invoice;
+
+    @OneToOne(mappedBy = "order")
+    private CardPayment payment;
 
     private BigDecimal total;
 
