@@ -1,6 +1,8 @@
 package com.algaworks.jpa.ecommerce.basicmapping;
 
 import com.algaworks.jpa.ecommerce.EntityManagerTest;
+import com.algaworks.jpa.ecommerce.model.Client;
+import com.algaworks.jpa.ecommerce.model.Gender;
 import com.algaworks.jpa.ecommerce.model.Order;
 import com.algaworks.jpa.ecommerce.model.OrderDeliveryAddress;
 import com.algaworks.jpa.ecommerce.model.StatusOrder;
@@ -22,11 +24,14 @@ public class MappingEmbeddedObject extends EntityManagerTest {
         address.setCity("Aliados");
         address.setState("Porto");
 
+        Client client = entityManager.find(Client.class, 1);
+
         Order order = new Order();
         order.setOrderDate(LocalDateTime.now());
         order.setStatus(StatusOrder.WAITING);
         order.setTotal(new BigDecimal(9.50));
         order.setDeliveryAddress(address);
+        order.setClient(client);
 
         entityManager.getTransaction().begin();
         entityManager.persist(order);
