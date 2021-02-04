@@ -26,11 +26,11 @@ public class OrderItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     @JoinColumn(name = "fk_order")
     private Order order;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     @JoinColumn(name = "fk_product")
     private Product product;
 

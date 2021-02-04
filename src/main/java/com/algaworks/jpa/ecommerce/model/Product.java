@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.util.List;
@@ -38,5 +39,8 @@ public class Product {
             joinColumns = @JoinColumn(name = "fk_product"),
             inverseJoinColumns = @JoinColumn(name = "fk_category"))
     private List<Category> categories;
+
+    @OneToOne(mappedBy = "product")
+    private Stock stock;
 
 }
