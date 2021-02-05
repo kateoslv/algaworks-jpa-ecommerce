@@ -27,7 +27,7 @@ public class MappingEmbeddedObject extends EntityManagerTest {
         Client client = entityManager.find(Client.class, 1);
 
         Order order = new Order();
-        order.setOrderDate(LocalDateTime.now());
+        order.setCreationDate(LocalDateTime.now());
         order.setStatus(StatusOrder.WAITING);
         order.setTotal(new BigDecimal(9.50));
         order.setDeliveryAddress(address);

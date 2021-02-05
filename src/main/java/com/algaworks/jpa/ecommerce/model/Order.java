@@ -40,8 +40,11 @@ public class Order {
     @OneToMany(mappedBy = "order")
     private List<OrderItem> orderItems;
 
-    @Column(name = "order_date")
-    private LocalDateTime orderDate;
+    @Column(name = "creation_date")
+    private LocalDateTime creationDate;
+
+    @Column(name = "last_update")
+    private LocalDateTime lastUpdate;
 
     @Column(name = "conclusion_date")
     private LocalDateTime conclusionDate;
