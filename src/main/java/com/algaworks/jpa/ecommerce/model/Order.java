@@ -1,5 +1,6 @@
 package com.algaworks.jpa.ecommerce.model;
 
+import com.algaworks.jpa.ecommerce.listener.GenerateInvoiceListener;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -7,6 +8,7 @@ import lombok.Setter;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
@@ -25,6 +27,7 @@ import java.util.List;
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Table(name = "ordering")
+@EntityListeners({GenerateInvoiceListener.class})
 @Entity
 public class Order {
 
@@ -62,5 +65,9 @@ public class Order {
 
     @Embedded
     private OrderDeliveryAddress deliveryAddress;
+
+    public boolean isPaid() {
+        return StatusOrder.PAID.equals(status);
+    }
 
 }
