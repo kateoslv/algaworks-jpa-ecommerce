@@ -33,8 +33,7 @@ public class CompositeKeyTest extends EntityManagerTest {
         entityManager.flush();
 
         OrderItem orderItem = new OrderItem();
-        orderItem.setIdOrder(order.getId());
-        orderItem.setIdProduct(product.getId());
+        orderItem.setId(new OrderItemId(order.getId(), product.getId()));
         orderItem.setOrder(order);
         orderItem.setProduct(product);
         orderItem.setProductPrice(product.getPrice());

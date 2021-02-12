@@ -55,8 +55,7 @@ public class ManyToOneRelationshipTest extends EntityManagerTest {
         entityManager.flush();
 
         OrderItem orderItem = new OrderItem();
-        orderItem.setIdOrder(order.getId());
-        orderItem.setIdProduct(product.getId());
+        orderItem.setId(new OrderItemId(order.getId(), product.getId()));
         orderItem.setProductPrice(product.getPrice());
         orderItem.setAmount(1);
         orderItem.setOrder(order);
