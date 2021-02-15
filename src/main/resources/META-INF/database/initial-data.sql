@@ -1,8 +1,8 @@
 INSERT INTO product (id, creation_date, name, description, price) VALUES (1, date_sub(sysdate(), interval  1 day), 'Kindle', 'The best kindle ever.', 199.00);
 INSERT INTO product (id, creation_date,  name, description, price) VALUES (2, date_sub(sysdate(), interval  1 day), 'Smartphone', 'The best one.', 99.00);
 
-INSERT INTO client (id, name) VALUES (1, 'Amelia');
-INSERT INTO client (id, name) VALUES (2, 'Alyssa');
+INSERT INTO client (id, name) VALUES (1, 'Amelia Robson');
+INSERT INTO client (id, name) VALUES (2, 'Alyssa Kirst');
 
 INSERT INTO ordering (id, fk_client, creation_date, total, status) VALUES (1, 1, sysdate(), 100.0, 'WAITING');
 
