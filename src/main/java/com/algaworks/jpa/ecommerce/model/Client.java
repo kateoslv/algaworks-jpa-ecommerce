@@ -11,7 +11,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.PostLoad;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import java.util.List;
 
 @Getter
@@ -28,10 +30,23 @@ public class Client {
 
     private String name;
 
+    @Transient
+    private String firstName;
+
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
     @OneToMany(mappedBy = "client")
     private List<Order> orders;
+
+    @PostLoad
+    public void setUpFirstName() {
+        if (name != null && !name.isBlank()) {
+            int index = name.indexOf(" ");
+            if (index > -1) {
+                firstName = name.substring(0, index);
+            }
+        }
+    }
 
 }
