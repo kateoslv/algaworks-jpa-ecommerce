@@ -4,7 +4,9 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -50,5 +52,16 @@ public class Product {
 
     @OneToOne(mappedBy = "product")
     private Stock stock;
+
+    @ElementCollection
+    @CollectionTable(name = "product_tag",
+            joinColumns = @JoinColumn(name = "fk_product"))
+    @Column(name = "tag")
+    private List<String> tags;
+
+    @ElementCollection
+    @CollectionTable(name = "product_attribute",
+            joinColumns = @JoinColumn(name = "fk_product"))
+    private List<Attribute> attributes;
 
 }

@@ -4,17 +4,23 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.CollectionTable;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapKeyColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.PostLoad;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import java.util.List;
+import java.util.Map;
 
 @Getter
 @Setter
@@ -29,6 +35,13 @@ public class Client {
     private Integer id;
 
     private String name;
+
+    @ElementCollection
+    @CollectionTable(name = "client_contact",
+            joinColumns = @JoinColumn(name = "fk_client"))
+    @MapKeyColumn(name = "type")
+    @Column(name = "description")
+    private Map<String, String> contacts;
 
     @Transient
     private String firstName;
