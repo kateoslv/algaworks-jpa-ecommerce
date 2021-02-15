@@ -4,6 +4,7 @@ import com.algaworks.jpa.ecommerce.EntityManagerTest;
 import com.algaworks.jpa.ecommerce.model.Client;
 import com.algaworks.jpa.ecommerce.model.Order;
 import com.algaworks.jpa.ecommerce.model.OrderItem;
+import com.algaworks.jpa.ecommerce.model.OrderItemId;
 import com.algaworks.jpa.ecommerce.model.Product;
 import com.algaworks.jpa.ecommerce.model.StatusOrder;
 import org.junit.Assert;
@@ -48,6 +49,7 @@ public class OneToManyRelationshipTest extends EntityManagerTest {
         order.setClient(client);
 
         OrderItem orderItem = new OrderItem();
+        orderItem.setId(new OrderItemId());
         orderItem.setProductPrice(product.getPrice());
         orderItem.setAmount(1);
         orderItem.setOrder(order);

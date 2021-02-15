@@ -28,19 +28,15 @@ public class CompositeKeyTest extends EntityManagerTest {
         order.setStatus(StatusOrder.WAITING);
         order.setTotal(product.getPrice());
 
-        entityManager.persist(order);
-
-        entityManager.flush();
-
         OrderItem orderItem = new OrderItem();
-        orderItem.setId(new OrderItemId(order.getId(), product.getId()));
+        orderItem.setId(new OrderItemId());
         orderItem.setOrder(order);
         orderItem.setProduct(product);
         orderItem.setProductPrice(product.getPrice());
         orderItem.setAmount(1);
 
+        entityManager.persist(order);
         entityManager.persist(orderItem);
-
         entityManager.getTransaction().commit();
 
         entityManager.clear();
