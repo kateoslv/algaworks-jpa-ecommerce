@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.Table;
 import java.math.BigDecimal;
 
@@ -23,12 +24,14 @@ public class OrderItem {
     @EmbeddedId
     private OrderItemId id;
 
+    @MapsId("idOrder")
     @ManyToOne(optional = false)
-    @JoinColumn(name = "fk_order", insertable = false, updatable = false)
+    @JoinColumn(name = "fk_order")
     private Order order;
 
+    @MapsId("idProduct")
     @ManyToOne(optional = false)
-    @JoinColumn(name = "fk_product", insertable = false, updatable = false)
+    @JoinColumn(name = "fk_product")
     private Product product;
 
     @Column(name = "product_price")
